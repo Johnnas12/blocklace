@@ -1,0 +1,17 @@
+use blocklace::{Block, BlockContent, BlockIdentity, NodeId};
+
+#[test]
+fn genesis_block_is_initial() {
+    let genesis_block = Block {
+        identity: BlockIdentity {
+            content_hash: [0xab, 0xcd, 0xef, 0x01, 0x23, 0x45, 0x67, 0x89,
+                0xab, 0xcd, 0xef, 0x01, 0x23, 0x45, 0x67, 0x89,
+                0xab, 0xcd, 0xef, 0x01, 0x23, 0x45, 0x67, 0x89,
+                0xab, 0xcd, 0xef, 0x01, 0x23, 0x45, 0x67, 0x89],
+            creator: NodeId(vec![0xab, 0xcd, 0xef, 0x12]),
+            signature: vec![],
+        },
+        content: BlockContent { payload: vec![], predecessors: std::collections::HashSet::new() },
+    };
+    assert!(genesis_block.is_initial());
+}
